@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 
 const links = [
@@ -22,9 +23,15 @@ export default function SiteHeader() {
           className="group flex items-center gap-3"
           onClick={() => setMenuAbierto(false)}
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-black text-sm font-black text-white transition-transform group-hover:-rotate-3">
-            TM
-          </div>
+          <div className="relative h-10 w-10 overflow-hidden rounded-xl bg-black transition-transform group-hover:-rotate-3">
+  <Image
+    src="/brand/logo-trip-musica.jpg"
+    alt="Trip Música"
+    fill
+    sizes="40px"
+    className="object-cover"
+  />
+</div>
 
           <div className="leading-none">
             <div className="text-xl font-black tracking-[-0.05em]">
