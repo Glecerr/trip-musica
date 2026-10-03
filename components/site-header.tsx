@@ -32,7 +32,7 @@ export default function SiteHeader() {
             </div>
 
             <div className="mt-1 text-[9px] font-bold uppercase tracking-[0.25em] text-black/40">
-              Música · Cultura · Coberturas
+              Del escenario a tu pantalla
             </div>
           </div>
         </Link>
