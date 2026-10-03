@@ -28,7 +28,7 @@ export default function SiteHeader() {
 
           <div className="leading-none">
             <div className="text-xl font-black tracking-[-0.05em]">
-              TRIP MUSIC
+              TRIP MUSICA
             </div>
 
             <div className="mt-1 text-[9px] font-bold uppercase tracking-[0.25em] text-black/40">

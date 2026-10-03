@@ -7,7 +7,7 @@ export default function SiteFooter() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
             <div className="text-3xl font-black tracking-[-0.06em]">
-              TRIP MUSIC
+              TRIP MUSICA
             </div>
 
             <p className="mt-4 max-w-md text-sm leading-6 text-white/45">
@@ -51,7 +51,7 @@ export default function SiteFooter() {
 
           <div>
             <p className="text-xs font-black uppercase tracking-[0.2em] text-white/35">
-              Trip Music
+              Trip Musica
             </p>
 
             <p className="mt-5 text-sm leading-6 text-white/45">

@@ -5,15 +5,15 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://trip-musica.vercel.app"),
 
   title: {
-    default: "Trip Music",
-    template: "%s | Trip Music",
+    default: "Trip Musica",
+    template: "%s | Trip Musica",
   },
 
   description:
     "Noticias, música, eventos, coberturas, fotos y videos de la escena musical.",
 
   keywords: [
-    "Trip Music",
+    "Trip Musica",
     "música",
     "noticias musicales",
     "recitales",
@@ -24,12 +24,12 @@ export const metadata: Metadata = {
   ],
 
   openGraph: {
-    title: "Trip Music",
+    title: "Trip Musica",
     description:
       "Noticias, música, eventos y coberturas de la escena musical.",
     type: "website",
     locale: "es_AR",
-    siteName: "Trip Music",
+    siteName: "Trip Musica",
   },
 
   robots: {

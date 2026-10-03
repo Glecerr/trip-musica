@@ -67,7 +67,7 @@ export default function AdminLoginPage() {
           </div>
 
           <p className="mt-8 text-xs font-black uppercase tracking-[0.2em] text-red-600">
-            Trip Music
+            Trip Musica
           </p>
 
           <h1 className="mt-2 text-4xl font-black tracking-tight">
@@ -75,7 +75,7 @@ export default function AdminLoginPage() {
           </h1>
 
           <p className="mt-3 text-sm leading-6 text-black/40">
-            Accedé al sistema de administración de Trip Music.
+            Accedé al sistema de administración de Trip Musica.
           </p>
 
           <form onSubmit={iniciarSesion} className="mt-8 space-y-5">

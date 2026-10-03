@@ -109,7 +109,7 @@ export default function HomePage() {
           <div>
             <p className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-red-600">
               <Sparkles size={14} />
-              Trip Music
+              Trip Musica
             </p>
 
             <h1 className="mt-3 max-w-3xl text-4xl font-black leading-[0.95] tracking-[-0.055em] md:text-6xl">
@@ -411,7 +411,7 @@ export default function HomePage() {
             <CalendarDays className="mx-auto text-black/20" size={36} />
             <p className="mt-4 text-lg font-black">No hay eventos próximos.</p>
             <p className="mt-2 text-sm text-black/40">
-              La agenda de Trip Music aparecerá acá.
+              La agenda de Trip Musica aparecerá acá.
             </p>
           </div>
         )}
@@ -427,7 +427,7 @@ export default function HomePage() {
             </div>
 
             <p className="mt-7 text-xs font-black uppercase tracking-[0.2em] text-red-400">
-              Trip Music
+              Trip Musica
             </p>
 
             <h2 className="mt-3 text-3xl font-black leading-tight tracking-[-0.04em] md:text-5xl">

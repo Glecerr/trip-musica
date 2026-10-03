@@ -11,7 +11,7 @@ export default function Loading() {
         </div>
 
         <p className="mt-4 text-xs font-black uppercase tracking-[0.2em] text-black/30">
-          Trip Music
+          Trip Musica
         </p>
       </div>
     </main>

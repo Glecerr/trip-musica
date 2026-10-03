@@ -60,7 +60,7 @@ export default async function EventosPage() {
         <div className="max-w-3xl">
           <p className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-red-600">
             <CalendarDays size={15} />
-            Agenda Trip Music
+            Agenda Trip Musica
           </p>
 
           <h1 className="mt-3 text-5xl font-black leading-[0.95] tracking-[-0.055em] md:text-7xl">

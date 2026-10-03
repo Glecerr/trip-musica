@@ -71,7 +71,7 @@ export default function AdminDashboard() {
 
             <div>
               <p className="text-lg font-black tracking-[-0.04em]">
-                Trip Music
+                Trip Musica
               </p>
 
               <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30">
@@ -111,7 +111,7 @@ export default function AdminDashboard() {
           </h1>
 
           <p className="mt-3 max-w-2xl text-sm leading-6 text-white/40">
-            Desde acá podés administrar todo el contenido de Trip Music.
+            Desde acá podés administrar todo el contenido de Trip Musica.
           </p>
         </section>
 
