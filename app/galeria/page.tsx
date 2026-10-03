@@ -62,7 +62,7 @@ export default function GaleriaPage() {
   }, [multimedia, filtro]);
 
   function cambiarSeleccion(direccion: number) {
-    if (!seleccionado) return;
+    if (!seleccionado || filtrados.length === 0) return;
 
     const indice = filtrados.findIndex(
       (item) => item.id === seleccionado.id
@@ -83,7 +83,7 @@ export default function GaleriaPage() {
           <div>
             <p className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-red-600">
               <ImageIcon size={15} />
-              Trip Musica
+              Trip Música
             </p>
 
             <h1 className="mt-3 text-5xl font-black leading-[0.95] tracking-[-0.055em] md:text-7xl">
@@ -156,7 +156,7 @@ export default function GaleriaPage() {
                   ) : (
                     <img
                       src={item.url}
-                      alt={item.titulo || "Trip Music"}
+                      alt={item.titulo || "Trip Música"}
                       className="block w-full transition duration-500 group-hover:scale-105"
                     />
                   )}
@@ -235,7 +235,7 @@ export default function GaleriaPage() {
             ) : (
               <img
                 src={seleccionado.url}
-                alt={seleccionado.titulo || "Trip Music"}
+                alt={seleccionado.titulo || "Trip Música"}
                 className="max-h-[85vh] max-w-full rounded-2xl object-contain"
               />
             )}

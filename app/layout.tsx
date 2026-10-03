@@ -3,35 +3,39 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://trip-musica.vercel.app"),
-
   title: {
-    default: "Trip Musica",
-    template: "%s | Trip Musica",
+    default: "Trip Música",
+    template: "%s | Trip Música",
   },
-
   description:
-    "Noticias, música, eventos, coberturas, fotos y videos de la escena musical.",
-
+    "Del escenario a tu pantalla. Noticias, eventos, coberturas, fotos y videos de la escena musical.",
+  applicationName: "Trip Música",
+  authors: [{ name: "Trip Música" }],
   keywords: [
-    "Trip Musica",
+    "Trip Música",
     "música",
-    "noticias musicales",
     "recitales",
     "eventos",
     "coberturas",
-    "fotografía musical",
-    "Argentina",
+    "noticias",
+    "fotos",
+    "videos",
   ],
-
   openGraph: {
-    title: "Trip Musica",
+    title: "Trip Música",
     description:
-      "Noticias, música, eventos y coberturas de la escena musical.",
-    type: "website",
+      "Del escenario a tu pantalla. Noticias, eventos y coberturas de la escena musical.",
+    url: "https://trip-musica.vercel.app",
+    siteName: "Trip Música",
     locale: "es_AR",
-    siteName: "Trip Musica",
+    type: "website",
   },
-
+  twitter: {
+    card: "summary_large_image",
+    title: "Trip Música",
+    description:
+      "Del escenario a tu pantalla. Noticias, eventos y coberturas de la escena musical.",
+  },
   robots: {
     index: true,
     follow: true,
@@ -45,7 +49,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body>{children}</body>
+      <body className="min-h-screen bg-[#f4f2ed] text-[#111] antialiased">
+        {children}
+      </body>
     </html>
   );
 }

@@ -4,6 +4,8 @@ import { supabase } from "@/lib/supabase";
 import SiteHeader from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
 
+export const dynamic = "force-dynamic";
+
 type Evento = {
   id: string;
   nombre: string;
@@ -53,33 +55,33 @@ export default async function EventosPage() {
   const lista = eventos || [];
 
   return (
-    <main className="min-h-screen bg-[#f4f2ed] text-[#111]">
+    <main className="min-h-screen overflow-x-hidden bg-[#f4f2ed] text-[#111]">
       <SiteHeader />
 
-      <section className="mx-auto max-w-7xl px-5 pb-20 pt-12 md:px-8 md:pt-16">
+      <section className="mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-5 sm:pb-20 sm:pt-12 md:px-8 md:pt-16">
         <div className="max-w-3xl">
-          <p className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-red-600">
+          <p className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-red-600 sm:text-xs">
             <CalendarDays size={15} />
-            Agenda Trip Musica
+            Agenda Trip Música
           </p>
 
-          <h1 className="mt-3 text-5xl font-black leading-[0.95] tracking-[-0.055em] md:text-7xl">
+          <h1 className="mt-3 text-5xl font-black leading-[0.9] tracking-[-0.055em] sm:text-6xl md:text-7xl">
             Eventos
           </h1>
 
-          <p className="mt-5 max-w-2xl text-base leading-7 text-black/45">
+          <p className="mt-5 max-w-2xl text-sm leading-6 text-black/45 sm:text-base sm:leading-7">
             Recitales, festivales, shows y los eventos que forman parte de la
             escena musical.
           </p>
         </div>
 
         {lista.length > 0 ? (
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-5 sm:mt-12 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
             {lista.map((evento) => (
               <Link
                 key={evento.id}
                 href={`/eventos/${evento.slug}`}
-                className="group overflow-hidden rounded-[2rem] bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+                className="group min-w-0 overflow-hidden rounded-[1.5rem] bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl sm:rounded-[2rem]"
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-black">
                   {evento.imagen_principal ? (
@@ -95,35 +97,37 @@ export default async function EventosPage() {
                   )}
 
                   {evento.fecha && (
-                    <div className="absolute left-4 top-4 flex min-w-[62px] flex-col items-center rounded-2xl bg-white px-3 py-3 shadow-xl">
-                      <span className="text-2xl font-black leading-none">
+                    <div className="absolute left-3 top-3 flex min-w-[58px] flex-col items-center rounded-xl bg-white px-2.5 py-2.5 shadow-xl sm:left-4 sm:top-4 sm:min-w-[62px] sm:rounded-2xl sm:px-3 sm:py-3">
+                      <span className="text-xl font-black leading-none sm:text-2xl">
                         {dia(evento.fecha)}
                       </span>
 
-                      <span className="mt-1 text-[9px] font-black tracking-[0.15em] text-red-600">
+                      <span className="mt-1 text-[8px] font-black tracking-[0.15em] text-red-600 sm:text-[9px]">
                         {mes(evento.fecha)}
                       </span>
                     </div>
                   )}
                 </div>
 
-                <div className="p-6">
-                  <h2 className="text-2xl font-black leading-tight tracking-[-0.035em] transition group-hover:text-red-600">
+                <div className="p-5 sm:p-6">
+                  <h2 className="break-words text-xl font-black leading-tight tracking-[-0.035em] transition group-hover:text-red-600 sm:text-2xl">
                     {evento.nombre}
                   </h2>
 
                   {evento.fecha && (
-                    <p className="mt-4 flex items-center gap-2 text-xs font-bold text-black/45">
-                      <CalendarDays size={14} />
-                      {fechaCompleta(evento.fecha)}
+                    <p className="mt-4 flex items-start gap-2 text-xs font-bold text-black/45">
+                      <CalendarDays size={14} className="mt-0.5 shrink-0" />
+                      <span>{fechaCompleta(evento.fecha)}</span>
                     </p>
                   )}
 
                   {evento.lugar && (
-                    <p className="mt-2 flex items-center gap-2 text-xs font-bold text-black/45">
-                      <MapPin size={14} />
-                      {evento.lugar}
-                      {evento.ciudad ? ` · ${evento.ciudad}` : ""}
+                    <p className="mt-2 flex items-start gap-2 text-xs font-bold text-black/45">
+                      <MapPin size={14} className="mt-0.5 shrink-0" />
+                      <span className="break-words">
+                        {evento.lugar}
+                        {evento.ciudad ? ` · ${evento.ciudad}` : ""}
+                      </span>
                     </p>
                   )}
 
@@ -145,7 +149,7 @@ export default async function EventosPage() {
             ))}
           </div>
         ) : (
-          <div className="mt-12 rounded-[2rem] border border-dashed border-black/10 p-14 text-center">
+          <div className="mt-10 rounded-[1.75rem] border border-dashed border-black/10 p-10 text-center sm:mt-12 sm:rounded-[2rem] sm:p-14">
             <CalendarDays className="mx-auto text-black/20" size={42} />
 
             <h2 className="mt-5 text-2xl font-black">

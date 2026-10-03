@@ -4,6 +4,8 @@ import { supabase } from "@/lib/supabase";
 import SiteHeader from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
 
+export const dynamic = "force-dynamic";
+
 type Noticia = {
   id: string;
   titulo: string;
@@ -40,31 +42,31 @@ export default async function NoticiasPage() {
   const restantes = lista.slice(1);
 
   return (
-    <main className="min-h-screen bg-[#f4f2ed] text-[#111]">
+    <main className="min-h-screen overflow-x-hidden bg-[#f4f2ed] text-[#111]">
       <SiteHeader />
 
-      <section className="mx-auto max-w-7xl px-5 pb-20 pt-12 md:px-8 md:pt-16">
+      <section className="mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-5 sm:pb-20 sm:pt-12 md:px-8 md:pt-16">
         <div className="max-w-3xl">
-          <p className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-red-600">
+          <p className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-red-600 sm:text-xs">
             <Newspaper size={15} />
             Actualidad
           </p>
 
-          <h1 className="mt-3 text-5xl font-black leading-[0.95] tracking-[-0.055em] md:text-7xl">
+          <h1 className="mt-3 text-5xl font-black leading-[0.9] tracking-[-0.055em] sm:text-6xl md:text-7xl">
             Noticias
           </h1>
 
-          <p className="mt-5 max-w-2xl text-base leading-7 text-black/45">
+          <p className="mt-5 max-w-2xl text-sm leading-6 text-black/45 sm:text-base sm:leading-7">
             Las últimas novedades de la música, artistas, lanzamientos,
             recitales y todo lo que pasa en la escena.
           </p>
         </div>
 
         {principal ? (
-          <div className="mt-12">
+          <div className="mt-10 sm:mt-12">
             <Link
               href={`/noticias/${principal.slug}`}
-              className="group relative block min-h-[480px] overflow-hidden rounded-[2rem] bg-black"
+              className="group relative block min-h-[520px] overflow-hidden rounded-[1.75rem] bg-black sm:min-h-[560px] sm:rounded-[2rem] md:min-h-[600px]"
             >
               {principal.imagen_principal ? (
                 <img
@@ -76,30 +78,30 @@ export default async function NoticiasPage() {
                 <div className="absolute inset-0 bg-gradient-to-br from-neutral-800 to-black" />
               )}
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent" />
 
-              <div className="absolute bottom-0 left-0 right-0 p-7 text-white md:p-10">
-                <div className="flex items-center gap-3">
-                  <span className="rounded-full bg-red-600 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.15em]">
+              <div className="absolute bottom-0 left-0 right-0 p-5 text-white sm:p-7 md:p-10">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                  <span className="rounded-full bg-red-600 px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.15em] sm:text-[10px]">
                     {principal.categoria || "Música"}
                   </span>
 
-                  <span className="text-xs font-bold text-white/50">
+                  <span className="text-[10px] font-bold text-white/50 sm:text-xs">
                     {formatearFecha(principal.created_at)}
                   </span>
                 </div>
 
-                <h2 className="mt-5 max-w-4xl text-3xl font-black leading-[1] tracking-[-0.045em] md:text-5xl">
+                <h2 className="mt-4 max-w-4xl text-3xl font-black leading-[0.95] tracking-[-0.045em] sm:mt-5 sm:text-4xl md:text-5xl">
                   {principal.titulo}
                 </h2>
 
                 {principal.bajada && (
-                  <p className="mt-4 max-w-2xl text-sm leading-6 text-white/65 md:text-base">
+                  <p className="mt-4 max-w-2xl text-sm leading-6 text-white/65 sm:text-base">
                     {principal.bajada}
                   </p>
                 )}
 
-                <div className="mt-7 flex items-center gap-2 text-sm font-black">
+                <div className="mt-6 flex items-center gap-2 text-sm font-black sm:mt-7">
                   Leer noticia
                   <ArrowRight
                     size={17}
@@ -110,7 +112,7 @@ export default async function NoticiasPage() {
             </Link>
           </div>
         ) : (
-          <div className="mt-12 rounded-[2rem] border border-dashed border-black/10 p-14 text-center">
+          <div className="mt-10 rounded-[1.75rem] border border-dashed border-black/10 p-10 text-center sm:mt-12 sm:rounded-[2rem] sm:p-14">
             <Newspaper className="mx-auto text-black/20" size={42} />
 
             <h2 className="mt-5 text-2xl font-black">
@@ -124,25 +126,25 @@ export default async function NoticiasPage() {
         )}
 
         {restantes.length > 0 && (
-          <section className="mt-16">
-            <div className="flex items-end justify-between border-b border-black/10 pb-5">
+          <section className="mt-14 sm:mt-16">
+            <div className="flex flex-col gap-3 border-b border-black/10 pb-5 sm:flex-row sm:items-end sm:justify-between">
               <h2 className="text-2xl font-black tracking-[-0.03em] md:text-3xl">
                 Todas las noticias
               </h2>
 
-              <span className="text-xs font-black uppercase tracking-[0.15em] text-black/30">
+              <span className="text-[10px] font-black uppercase tracking-[0.15em] text-black/30 sm:text-xs">
                 {lista.length} publicaciones
               </span>
             </div>
 
-            <div className="mt-8 grid gap-x-6 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-8 grid gap-x-6 gap-y-10 sm:gap-y-12 md:grid-cols-2 lg:grid-cols-3">
               {restantes.map((noticia) => (
                 <Link
                   key={noticia.id}
                   href={`/noticias/${noticia.slug}`}
-                  className="group"
+                  className="group min-w-0"
                 >
-                  <div className="aspect-[16/10] overflow-hidden rounded-3xl bg-black/5">
+                  <div className="aspect-[16/10] overflow-hidden rounded-[1.5rem] bg-black/5 sm:rounded-3xl">
                     {noticia.imagen_principal ? (
                       <img
                         src={noticia.imagen_principal}
@@ -156,8 +158,8 @@ export default async function NoticiasPage() {
                     )}
                   </div>
 
-                  <div className="mt-5">
-                    <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.15em]">
+                  <div className="mt-5 min-w-0">
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[9px] font-black uppercase tracking-[0.15em] sm:text-[10px]">
                       <span className="text-red-600">
                         {noticia.categoria || "Música"}
                       </span>
@@ -169,7 +171,7 @@ export default async function NoticiasPage() {
                       </span>
                     </div>
 
-                    <h3 className="mt-2 text-xl font-black leading-tight tracking-[-0.03em] transition group-hover:text-red-600">
+                    <h3 className="mt-2 break-words text-xl font-black leading-tight tracking-[-0.03em] transition group-hover:text-red-600">
                       {noticia.titulo}
                     </h3>
 

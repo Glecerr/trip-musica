@@ -1,58 +1,62 @@
 import type { MetadataRoute } from "next";
 import { supabase } from "@/lib/supabase";
 
+const BASE_URL = "https://trip-musica.vercel.app";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://trip-musica.vercel.app";
+  const [
+    { data: noticias },
+    { data: eventos },
+  ] = await Promise.all([
+    supabase
+      .from("noticias")
+      .select("slug, updated_at, created_at")
+      .eq("publicada", true),
 
-  const { data: noticias } = await supabase
-    .from("noticias")
-    .select("slug, updated_at")
-    .eq("publicada", true);
+    supabase
+      .from("eventos")
+      .select("slug, updated_at, fecha"),
+  ]);
 
-  const { data: eventos } = await supabase
-    .from("eventos")
-    .select("slug, updated_at");
-
-  return [
+  const paginas: MetadataRoute.Sitemap = [
     {
-      url: baseUrl,
-      lastModified: new Date(),
+      url: BASE_URL,
       changeFrequency: "daily",
       priority: 1,
     },
     {
-      url: `${baseUrl}/noticias`,
-      lastModified: new Date(),
+      url: `${BASE_URL}/noticias`,
       changeFrequency: "daily",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/eventos`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
+      url: `${BASE_URL}/eventos`,
+      changeFrequency: "daily",
+      priority: 0.9,
     },
     {
-      url: `${baseUrl}/galeria`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    ...(noticias || []).map((noticia) => ({
-      url: `${baseUrl}/noticias/${noticia.slug}`,
-      lastModified: noticia.updated_at
-        ? new Date(noticia.updated_at)
-        : new Date(),
-      changeFrequency: "weekly" as const,
+      url: `${BASE_URL}/galeria`,
+      changeFrequency: "daily",
       priority: 0.8,
-    })),
-    ...(eventos || []).map((evento) => ({
-      url: `${baseUrl}/eventos/${evento.slug}`,
-      lastModified: evento.updated_at
-        ? new Date(evento.updated_at)
-        : new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 0.7,
-    })),
+    },
   ];
+
+  const noticiasUrls: MetadataRoute.Sitemap =
+    (noticias || []).map((noticia) => ({
+      url: `${BASE_URL}/noticias/${noticia.slug}`,
+      lastModified:
+        noticia.updated_at || noticia.created_at || undefined,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    }));
+
+  const eventosUrls: MetadataRoute.Sitemap =
+    (eventos || []).map((evento) => ({
+      url: `${BASE_URL}/eventos/${evento.slug}`,
+      lastModified: evento.updated_at || evento.fecha || undefined,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    }));
+
+  return [...paginas, ...noticiasUrls, ...eventosUrls];
 }
