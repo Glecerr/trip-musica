@@ -53,7 +53,7 @@ export default function AdminLoginPage() {
   return (
     <main className="flex min-h-screen items-center justify-center bg-[#111] px-5 py-10">
       <div className="w-full max-w-md">
-        <Link
+        <Link 
           href="/"
           className="mb-8 flex items-center gap-2 text-sm font-bold text-white/40 transition hover:text-white"
         >

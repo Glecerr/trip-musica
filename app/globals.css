@@ -62,3 +62,83 @@ img {
 ::-webkit-scrollbar-thumb:hover {
   background: #99958d;
 }
+/* =========================================================
+   TRIP MÚSICA — FONDO CHECKERBOARD
+========================================================= */
+
+.trip-pattern {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: #f3f1eb;
+}
+
+.trip-pattern::before {
+  content: "";
+  position: absolute;
+  inset: -80px;
+  z-index: -1;
+
+  background-image:
+    linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.035) 25%,
+      transparent 25%,
+      transparent 75%,
+      rgba(0, 0, 0, 0.035) 75%
+    ),
+    linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.035) 25%,
+      transparent 25%,
+      transparent 75%,
+      rgba(0, 0, 0, 0.035) 75%
+    );
+
+  background-position:
+    0 0,
+    32px 32px;
+
+  background-size:
+    64px 64px;
+
+  animation: trip-pattern-move 24s linear infinite;
+  pointer-events: none;
+}
+
+.trip-pattern::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 255, 255, 0.65),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(255, 255, 255, 0.5),
+      transparent 30%
+    );
+
+  pointer-events: none;
+}
+
+@keyframes trip-pattern-move {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(64px, 64px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trip-pattern::before {
+    animation: none;
+  }
+}

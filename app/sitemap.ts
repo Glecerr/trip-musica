@@ -1,13 +1,12 @@
 import type { MetadataRoute } from "next";
 import { supabase } from "@/lib/supabase";
 
+export const dynamic = "force-dynamic";
+
 const BASE_URL = "https://trip-musica.vercel.app";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [
-    { data: noticias },
-    { data: eventos },
-  ] = await Promise.all([
+  const [{ data: noticias }, { data: eventos }] = await Promise.all([
     supabase
       .from("noticias")
       .select("slug, updated_at, created_at")
